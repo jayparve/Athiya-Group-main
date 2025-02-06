@@ -1,5 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { TrendingUp, Building2, Map } from 'lucide-react';
+// import { TrendingUp, Building2, Map } from 'lucide-react';
+import TrendingUp from "../assets/investicon.png"
+import Building2 from "../assets/factory.png"
+import Map from "../assets/growth.png"
 
 const InvestmentOpportunities = () => {
   const sectionRef = useRef(null);
@@ -116,7 +119,7 @@ const InvestmentOpportunities = () => {
                   group-hover:scale-110 group-hover:rotate-12
                   ${card.color}
                 `}>
-                  <Icon size={32} strokeWidth={1.5} />
+                  <img src={card.icon} className='w-12 h-12' alt="" />
                 </div>
 
                 {/* Content */}
@@ -139,7 +142,8 @@ const InvestmentOpportunities = () => {
                 </div>
 
                 {/* Hover gradient effect */}
-                <div className="
+                <div 
+                className="
                   absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent
                   opacity-0 group-hover:opacity-20
                   transform -translate-x-full group-hover:translate-x-full

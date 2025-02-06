@@ -1,3 +1,5 @@
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -6,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      // fontFamily: {
+      //   poppins: ['Poppins', 'sans-serif']
+      // },
       colors: {
         // primary: "#0F1F14",
         accent: "#F9B42A",
@@ -20,6 +25,7 @@ export default {
         }
         
       },
+      
       
     },
   },

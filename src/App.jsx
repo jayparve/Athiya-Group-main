@@ -9,6 +9,7 @@ import ProjectsPage from './pages/ProjectsPage';
 import ServicePage from './pages/ServicePage';
 import ScrollToTop from './components/ScrollToTop';
 import ContactUsPage from './pages/ContactusPage';
+import 'aos/dist/aos.css'
 
 export default function App() {
   return (
