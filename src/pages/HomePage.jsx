@@ -1,4 +1,7 @@
 import React from "react";
+import { useSmootherScroll } from '../hooks/useSmootherScroll';
+import { applyScrollOptimizations } from '../utils/scrollOptimizer';
+import { useEffect } from 'react';
 import Hero from "../components/Herosection";
 import AboutUs from "../components/AboutUsCard";
 import Services from "../components/Service";
@@ -8,9 +11,15 @@ import FAQ from "../components/FAQ";
 import ProjectsHomepage from "../components/ProjectsHomepage";
 
 function HomePage() {
+  useSmootherScroll();
+  
+  useEffect(() => {
+    applyScrollOptimizations();
+  }, []);
+
   return (
     <main className="relative min-h-screen pt-[72px]">
-    
+    <div className="scroll-content">
       <Hero />
       <ProjectsHomepage />
       <AboutUs/>
@@ -18,6 +27,7 @@ function HomePage() {
       <WhyMahaMumbai/>
       <Testimonials/>
       <FAQ/>
+      </div>
     </main>
   );
 }
