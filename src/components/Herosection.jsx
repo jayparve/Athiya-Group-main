@@ -94,7 +94,7 @@ const Hero = () => {
           </Suspense>
 
           {/* Optimized overlay */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-black/40 " />
 
           {/* Content */}
           <div className="relative h-full flex items-center justify-center text-center">

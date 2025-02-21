@@ -69,6 +69,7 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
+            <Link to="/" className={linkClass('/')}>Home</Link>
             <Link to="/aboutus" className={linkClass('/aboutus')}>About Us</Link>
             <Link to="/project" className={linkClass('/project')}>Projects</Link>
             <Link to="/service" className={linkClass('/service')}>Services</Link>

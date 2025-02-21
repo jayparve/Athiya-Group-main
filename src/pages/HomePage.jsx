@@ -9,6 +9,7 @@ import WhyMahaMumbai from "../components/WhyMahaMumbai";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import ProjectsHomepage from "../components/ProjectsHomepage";
+import HomeProject from "../components/HomeProject";
 
 function HomePage() {
   useSmootherScroll();
@@ -21,7 +22,8 @@ function HomePage() {
     <main className="relative min-h-screen pt-[72px]">
     <div className="scroll-content">
       <Hero />
-      <ProjectsHomepage />
+      <HomeProject />
+      {/* <ProjectsHomepage/> */}
       <AboutUs/>
       <Services/>
       <WhyMahaMumbai/>
