@@ -295,19 +295,19 @@ const ProjectSection = () => {
     const projectId = parseInt(searchParams.get('id'));
     if (projectId) {
       setExpandedId(projectId);
-
-      //Add small delay to ensure DOM is updated
+      
+      // Calculate dynamic offset - increases by 100px for each project
+      const scrollOffset = 0 + (projectId * 50); 
+      
       setTimeout(() => {
         const element = document.getElementById(`project-${projectId}`);
         if(element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Add some padding from top of viewport
-          window.scrollBy(0, 200);
+          window.scrollBy(0, scrollOffset);
         }
-      }, 100)
+      }, 100);
     }
   }, [searchParams]);
-
   
 
   return (
