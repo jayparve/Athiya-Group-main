@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Logo from "../assets/Athiya-logo.png"
+import Logo from "../assets/athiya-logo.webp"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

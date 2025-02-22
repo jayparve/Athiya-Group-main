@@ -8,7 +8,6 @@ import Services from "../components/Service";
 import WhyMahaMumbai from "../components/WhyMahaMumbai";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
-import ProjectsHomepage from "../components/ProjectsHomepage";
 import HomeProject from "../components/HomeProject";
 
 function HomePage() {
@@ -23,7 +22,6 @@ function HomePage() {
     <div className="scroll-content">
       <Hero />
       <HomeProject />
-      {/* <ProjectsHomepage/> */}
       <AboutUs/>
       <Services/>
       <WhyMahaMumbai/>
