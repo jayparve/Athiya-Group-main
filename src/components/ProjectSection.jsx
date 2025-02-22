@@ -65,36 +65,6 @@ const ProjectSection = () => {
     },
     {
       id: 2,
-      title: "Dapoli 712 – Coastal Living in Kelashi",
-      type: "Residential Plot",
-      rating: "4.5",
-      mainImage: dapoliimg1,
-      subImages: [
-        agroimg1,
-        agroimg3,
-        agroimg4
-      ],
-      description: "Dapoli 712 is a premium seaside escape nestled in the lush greenery of Kelashi. Experience beachfront living with modern amenities, just a short drive from Mumbai & Pune.",
-      WhyInvest: "Why invest in Dapoli 712",
-      whyIvestPoints:[
-        "• Close to key infrastructure projects",
-        "• Perfect for organic farming and eco-retreats",
-        "• With upcoming highways and connectivity plans",
-        "• Clear LAnd Titles & Hassle-Free Documentation"
-
-      ],
-      highlights: [
-        "10 mins from the Beach",
-        "1 hour from Mumbai-Goa Highway",
-        "2 hours from Navi Mumbai International Airport"
-      ],
-      details: [
-        { price: "₹X lakhs", area: "20 Guntha (20,000 SQ. FT)", type: "Residential Plot" },
-        { price: "₹X lakhs", area: "ACRE (40,000 SQ. FT)", type: "Residential Plot" }
-      ]
-    },
-    {
-      id: 3,
       title: "Agrow Eco",
       type: "Residential Plot",
       rating: "4.5",
@@ -124,38 +94,10 @@ const ProjectSection = () => {
         { price: "₹X lakhs", area: "ACRE (40,000 SQ. FT)", type: "Residential Plot" }
       ]
     },
-    {
-      id: 4,
-      title: "The Fram dale",
-      type: "Residential Plot",
-      rating: "4.5",
-      mainImage: farmimg1,
-      subImages: [
-        farmimg2,
-        farmimg3,
-        farmimg4
-      ],
-      description: "Farm Dale is an exclusive farm-living community offeriing lush green plots and farmmhouse villas nestled in a serene natural environment. Design for those who crave tranquility yet want modern comforts, this project blemds sustainable living with luxury.",
-      WhyInvest: "Why invest in Farm Dale",
-      whyIvestPoints:[
-        "• Gated & Secure community",
-        "• Plots with Plantation & Organic Farming",
-        "• Modern Amenities with Rustic Charm",
-        "• Excellent Investment & Weekend Gateway"
 
-      ],
-      highlights: [
-        "30 mins from City Center",
-        "10 mins from Nearest Railway Station",
-        "Surrounded by Natural Lakes & Hills"
-      ],
-      details: [
-        { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" },
-        { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" }
-      ]
-    },
+
     {
-      id: 5,
+      id: 3,
       title: "Shivsprash",
       type: "Residential Plot",
       rating: "4.5",
@@ -185,8 +127,9 @@ const ProjectSection = () => {
         { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" }
       ]
     },
+
     {
-      id: 6,
+      id: 4,
       title: "Smarath Hill",
       type: "Residential Plot",
       rating: "4.5",
@@ -213,6 +156,70 @@ const ProjectSection = () => {
       details: [
         { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" },
         { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" }
+      ]
+    },
+    
+    {
+      id: 5,
+      title: "The Fram dale",
+      type: "Residential Plot",
+      rating: "4.5",
+      mainImage: farmimg1,
+      subImages: [
+        farmimg2,
+        farmimg3,
+        farmimg4
+      ],
+      description: "Farm Dale is an exclusive farm-living community offeriing lush green plots and farmmhouse villas nestled in a serene natural environment. Design for those who crave tranquility yet want modern comforts, this project blemds sustainable living with luxury.",
+      WhyInvest: "Why invest in Farm Dale",
+      whyIvestPoints:[
+        "• Gated & Secure community",
+        "• Plots with Plantation & Organic Farming",
+        "• Modern Amenities with Rustic Charm",
+        "• Excellent Investment & Weekend Gateway"
+
+      ],
+      highlights: [
+        "30 mins from City Center",
+        "10 mins from Nearest Railway Station",
+        "Surrounded by Natural Lakes & Hills"
+      ],
+      details: [
+        { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" },
+        { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" }
+      ]
+    },
+    
+    
+
+    {
+      id: 6,
+      title: "Dapoli 712 – Coastal Living in Kelashi",
+      type: "Residential Plot",
+      rating: "4.5",
+      mainImage: dapoliimg1,
+      subImages: [
+        agroimg1,
+        agroimg3,
+        agroimg4
+      ],
+      description: "Dapoli 712 is a premium seaside escape nestled in the lush greenery of Kelashi. Experience beachfront living with modern amenities, just a short drive from Mumbai & Pune.",
+      WhyInvest: "Why invest in Dapoli 712",
+      whyIvestPoints:[
+        "• Close to key infrastructure projects",
+        "• Perfect for organic farming and eco-retreats",
+        "• With upcoming highways and connectivity plans",
+        "• Clear LAnd Titles & Hassle-Free Documentation"
+
+      ],
+      highlights: [
+        "10 mins from the Beach",
+        "1 hour from Mumbai-Goa Highway",
+        "2 hours from Navi Mumbai International Airport"
+      ],
+      details: [
+        { price: "₹X lakhs", area: "20 Guntha (20,000 SQ. FT)", type: "Residential Plot" },
+        { price: "₹X lakhs", area: "ACRE (40,000 SQ. FT)", type: "Residential Plot" }
       ]
     },
   ];

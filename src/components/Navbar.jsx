@@ -73,7 +73,7 @@ const Navbar = () => {
             <Link to="/aboutus" className={linkClass('/aboutus')}>About Us</Link>
             <Link to="/project" className={linkClass('/project')}>Projects</Link>
             <Link to="/service" className={linkClass('/service')}>Services</Link>
-            <Link to="/mahamumbai" className={linkClass('/mahamumbai')}>Why Maha Mumbai?</Link>
+            <Link to="/mahamumbai" className={linkClass('/mahamumbai')}>Third New Town</Link>
           </div>
 
           {/* Contact Button */}
@@ -96,7 +96,7 @@ const Navbar = () => {
           <Link to="/aboutus" className={linkClass('/aboutus')}>About Us</Link>
             <Link to="/project" className={linkClass('/project')}>Projects</Link>
             <Link to="/service" className={linkClass('/service')}>Services</Link>
-            <Link to="/mahamumbai" className={linkClass('/mahamumbai')}>Why Maha Mumbai?</Link>
+            <Link to="/mahamumbai" className={linkClass('/mahamumbai')}>Third New Town</Link>
             <Link to="/contactus">
             <button className={`w-full px-6 py-2 rounded-full transition-colors duration-300 font-normal ${
               isActive('/contactus')

@@ -1,21 +1,78 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef, useCallback, memo, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import dapoliimg1 from "../assets/project-1.webp";
+import agroimg2 from "../assets/project-2.webp";
+import farmimg1 from "../assets/project-3.webp";
+import shivimg1 from "../assets/project-4.webp";
+import samimg1 from "../assets/project-5.webp";
 
 const cards = [
-  { url: dapoliimg1, title: "Dalopli, Ratnagiri", id: 2 },
-  { url: farmimg1, title: "Agrow Eco, Mahad", id: 3 },
-  { url: agroimg2, title: "Farm Dale, Pali", id: 4 },
-  { url: shivimg1, title: "Shivsparash", id: 5 },
-  { url: samimg1, title: "Samarth Hill", id: 6 }
+  { url: farmimg1, title: "Agrow Eco, Mahad", id: 2 },
+  { url: shivimg1, title: "Shivsparash", id: 3 },
+  { url: samimg1, title: "Samarth Hill", id: 4 },
+  { url: agroimg2, title: "Farm Dale, Pali", id: 5 },
+  { url: dapoliimg1, title: "Dalopli, Ratnagiri", id: 6 },
 ];
 
-const getTransformPercentage = (containerWidth, viewportWidth) => {
-  // No transform needed for desktop (>1024px)
-  if (viewportWidth > 1024) return 0;
-  
-  const base = ((containerWidth - viewportWidth) / viewportWidth) * 100;
-  return viewportWidth < 768 ? Math.min(base, 80) : Math.min(base, 60);
+const HomeProject = () => {
+  const navigate = useNavigate();
+  const handleKnowMore = useCallback((id) => {
+    navigate(`/project?id=${id}`);
+    localStorage.setItem('activeProject', id.toString());
+  }, [navigate]);
+  return <HorizontalScrollCarousel onKnowMore={handleKnowMore} />;
+};
+
+const HorizontalScrollCarousel = ({ onKnowMore }) => {
+  const targetRef = useRef(null);
+  const containerRef = useRef(null);
+  const [transformPercentage, setTransformPercentage] = useState("-25%");
+  const { scrollYProgress } = useScroll({ target: targetRef });
+
+  useEffect(() => {
+    const updateTransformPercentage = () => {
+      if (!containerRef.current) return;
+      
+      const containerWidth = containerRef.current.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      const percentage = ((containerWidth - viewportWidth) / viewportWidth) * 100;
+      
+      // Set different percentages based on screen size
+      if (viewportWidth < 768) { // Small screens
+        setTransformPercentage(`-${Math.min(percentage, 80)}%`);
+      } else if (viewportWidth < 1024) { // Medium screens
+        setTransformPercentage(`-${Math.min(percentage, 60)}%`);
+      } else if (viewportWidth > 1024 & viewportWidth < 1920) { // Large screens
+        setTransformPercentage(`-${Math.min(percentage, 20)}%`);
+      } else {
+        setTransformPercentage(`-${Math.min(percentage, 0)}%`);
+      }
+    };
+
+    updateTransformPercentage();
+    window.addEventListener('resize', updateTransformPercentage);
+    
+    return () => window.removeEventListener('resize', updateTransformPercentage);
+  }, []);
+
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", transformPercentage]);
+
+  return (
+    <section ref={targetRef} className="relative h-[300vh]">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <motion.div 
+          ref={containerRef} 
+          style={{ x }} 
+          className="flex gap-4"
+        >
+          {cards.map(card => (
+            <Card key={card.id} card={card} onKnowMore={onKnowMore} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 const Card = memo(({ card: { id, url, title }, onKnowMore }) => (
@@ -49,59 +106,5 @@ const Card = memo(({ card: { id, url, title }, onKnowMore }) => (
     </div>
   </motion.div>
 ));
-
-const HorizontalScrollCarousel = ({ onKnowMore }) => {
-  const targetRef = useRef(null);
-  const containerRef = useRef(null);
-  const [transformValue, setTransformValue] = useState("0%");
-  const { scrollYProgress } = useScroll({ target: targetRef });
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
-
-  useEffect(() => {
-    const updateTransform = () => {
-      if (!containerRef.current) return;
-      const viewportWidth = window.innerWidth;
-      setIsDesktop(viewportWidth > 1024);
-      
-      const percentage = getTransformPercentage(
-        containerRef.current.scrollWidth,
-        viewportWidth
-      );
-      setTransformValue(`-${percentage}%`);
-    };
-
-    updateTransform();
-    window.addEventListener('resize', updateTransform);
-    return () => window.removeEventListener('resize', updateTransform);
-  }, []);
-
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", transformValue]);
-
-  return (
-    <section ref={targetRef} className={`relative ${isDesktop ? 'h-screen' : 'h-[300vh]'}`}>
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div 
-          ref={containerRef} 
-          style={{ x }} 
-          className={`flex gap-4 ${isDesktop ? 'justify-center w-full' : ''}`}
-        >
-          {cards.map(card => (
-            <Card key={card.id} card={card} onKnowMore={onKnowMore} />
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const HomeProject = () => {
-  const navigate = useNavigate();
-  const handleKnowMore = useCallback((id) => {
-    navigate(`/project?id=${id}`);
-    localStorage.setItem('activeProject', id.toString());
-  }, [navigate]);
-  
-  return <HorizontalScrollCarousel onKnowMore={handleKnowMore} />;
-};
 
 export default HomeProject;
