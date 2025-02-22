@@ -1,11 +1,11 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef, useCallback, memo, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import dapoliimg1 from "../assets/project-1.webp";
-import agroimg2 from "../assets/project-2.webp";
-import farmimg1 from "../assets/project-3.webp";
-import shivimg1 from "../assets/project-4.webp";
-import samimg1 from "../assets/project-5.webp";
+import dapoliimg1 from "../assets/project-1.webp"
+import farmimg1 from "../assets/project-2.webp"
+import agroimg2 from "../assets/project-3.webp"
+import shivimg1 from "../assets/project-4.webp"
+import samimg1 from "../assets/project-5.webp"
 
 const cards = [
   { url: farmimg1, title: "Agrow Eco, Mahad", id: 2 },
@@ -21,50 +21,65 @@ const HomeProject = () => {
     navigate(`/project?id=${id}`);
     localStorage.setItem('activeProject', id.toString());
   }, [navigate]);
-  return <HorizontalScrollCarousel onKnowMore={handleKnowMore} />;
+  
+  return <ProjectDisplay onKnowMore={handleKnowMore} />;
 };
 
-const HorizontalScrollCarousel = ({ onKnowMore }) => {
+const ProjectDisplay = ({ onKnowMore }) => {
   const targetRef = useRef(null);
   const containerRef = useRef(null);
-  const [transformPercentage, setTransformPercentage] = useState("-25%");
+  const [isDesktopMonitor, setIsDesktopMonitor] = useState(false);
   const { scrollYProgress } = useScroll({ target: targetRef });
+  const [transformPercentage, setTransformPercentage] = useState("-25%");
 
   useEffect(() => {
+    const checkDisplay = () => {
+      const width = window.innerWidth;
+      const dpr = window.devicePixelRatio;
+      
+      // Desktop monitors typically have DPR of 1
+      // Most laptops (especially high-res ones) have DPR > 1
+      const isLikelyDesktopMonitor = width >= 1920 && dpr <= 1;
+      setIsDesktopMonitor(isLikelyDesktopMonitor);
+    };
+    
+    checkDisplay();
+    window.addEventListener('resize', checkDisplay);
+    return () => window.removeEventListener('resize', checkDisplay);
+  }, []);
+
+  useEffect(() => {
+    if (isDesktopMonitor) return;
+
     const updateTransformPercentage = () => {
       if (!containerRef.current) return;
-      
       const containerWidth = containerRef.current.scrollWidth;
       const viewportWidth = window.innerWidth;
       const percentage = ((containerWidth - viewportWidth) / viewportWidth) * 100;
       
-      // Set different percentages based on screen size
-      if (viewportWidth < 768) { // Small screens
+      if (viewportWidth < 768) {
         setTransformPercentage(`-${Math.min(percentage, 80)}%`);
-      } else if (viewportWidth < 1024) { // Medium screens
+      } else if (viewportWidth < 1024) {
         setTransformPercentage(`-${Math.min(percentage, 60)}%`);
-      } else if (viewportWidth > 1024 & viewportWidth < 1920) { // Large screens
-        setTransformPercentage(`-${Math.min(percentage, 20)}%`);
       } else {
-        setTransformPercentage(`-${Math.min(percentage, 0)}%`);
+        setTransformPercentage(`-${Math.min(percentage, 20)}%`);
       }
     };
 
     updateTransformPercentage();
     window.addEventListener('resize', updateTransformPercentage);
-    
     return () => window.removeEventListener('resize', updateTransformPercentage);
-  }, []);
+  }, [isDesktopMonitor]);
 
   const x = useTransform(scrollYProgress, [0, 1], ["1%", transformPercentage]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh]">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+    <section ref={targetRef} className={`relative ${!isDesktopMonitor ? 'h-[300vh]' : 'min-h-screen'}`}>
+      <div className={`${!isDesktopMonitor ? 'sticky top-0' : ''} flex h-screen items-center overflow-hidden`}>
         <motion.div 
-          ref={containerRef} 
-          style={{ x }} 
-          className="flex gap-4"
+          ref={containerRef}
+          style={isDesktopMonitor ? { x: 0 } : { x }}
+          className={`flex gap-4 px-4 ${isDesktopMonitor ? 'justify-center flex-wrap' : 'flex-nowrap'}`}
         >
           {cards.map(card => (
             <Card key={card.id} card={card} onKnowMore={onKnowMore} />
