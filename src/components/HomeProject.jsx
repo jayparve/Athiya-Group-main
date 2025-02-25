@@ -1,4 +1,4 @@
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useCallback, memo, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import dapoliimg1 from "../assets/project-1.webp"
@@ -26,21 +26,16 @@ const HomeProject = () => {
 };
 
 const ProjectDisplay = ({ onKnowMore }) => {
-  const targetRef = useRef(null);
-  const containerRef = useRef(null);
+  const [translateX, setTranslateX] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isDesktopMonitor, setIsDesktopMonitor] = useState(false);
-  const { scrollYProgress } = useScroll({ target: targetRef });
-  const [transformPercentage, setTransformPercentage] = useState("-25%");
 
+  // Check if display is desktop
   useEffect(() => {
     const checkDisplay = () => {
       const width = window.innerWidth;
       const dpr = window.devicePixelRatio;
-      
-      // Desktop monitors typically have DPR of 1
-      // Most laptops (especially high-res ones) have DPR > 1
-      const isLikelyDesktopMonitor = width >= 1920 && dpr <= 1;
-      setIsDesktopMonitor(isLikelyDesktopMonitor);
+      setIsDesktopMonitor(width >= 1920 && dpr <= 1);
     };
     
     checkDisplay();
@@ -48,52 +43,70 @@ const ProjectDisplay = ({ onKnowMore }) => {
     return () => window.removeEventListener('resize', checkDisplay);
   }, []);
 
+  // Calculate total width for animation
+  const cardWidth = 350;
+  const gapWidth = 16; // 4rem = 16px
+  const totalWidth = (cardWidth + gapWidth) * (cards.length * 2);
+
+  // Smooth animation using requestAnimationFrame (like KeyHighlights)
   useEffect(() => {
-    if (isDesktopMonitor) return;
-
-    const updateTransformPercentage = () => {
-      if (!containerRef.current) return;
-      const containerWidth = containerRef.current.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const percentage = ((containerWidth - viewportWidth) / viewportWidth) * 100;
-      
-      if (viewportWidth < 768) {
-        setTransformPercentage(`-${Math.min(percentage, 80)}%`);
-      } else if (viewportWidth < 1024) {
-        setTransformPercentage(`-${Math.min(percentage, 60)}%`);
-      } else {
-        setTransformPercentage(`-${Math.min(percentage, 20)}%`);
-      }
+    if (isDesktopMonitor) return; // Don't animate on desktop
+    
+    let animationId;
+    const animate = () => {
+      setTranslateX(prev => {
+        // Reset when scrolled one complete set
+        if (Math.abs(prev) >= totalWidth / 2) return 0;
+        return prev - 1;
+      });
+      animationId = requestAnimationFrame(animate);
     };
+    
+    if (hoveredIndex === null) {
+      animationId = requestAnimationFrame(animate);
+    }
+    
+    return () => cancelAnimationFrame(animationId);
+  }, [hoveredIndex, totalWidth, isDesktopMonitor]);
 
-    updateTransformPercentage();
-    window.addEventListener('resize', updateTransformPercentage);
-    return () => window.removeEventListener('resize', updateTransformPercentage);
-  }, [isDesktopMonitor]);
-
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", transformPercentage]);
+  // Create duplicated cards for infinite scroll effect
+  const displayCards = [...cards, ...cards, ...cards];
 
   return (
-    <section ref={targetRef} className={`relative ${!isDesktopMonitor ? 'h-[300vh]' : 'min-h-screen'}`}>
-      <div className={`${!isDesktopMonitor ? 'sticky top-0' : ''} flex h-screen items-center overflow-hidden`}>
-        <motion.div 
-          ref={containerRef}
-          style={isDesktopMonitor ? { x: 0 } : { x }}
+    <section className="relative min-h-screen">
+      <div className="flex h-screen items-center overflow-hidden">
+        <div 
           className={`flex gap-4 px-4 ${isDesktopMonitor ? 'justify-center flex-wrap' : 'flex-nowrap'}`}
+          style={isDesktopMonitor ? {} : { 
+            transform: `translateX(${translateX}px)`,
+            transition: 'transform 0.1s linear'
+          }}
+          onMouseEnter={() => setHoveredIndex(0)}
+          onMouseLeave={() => setHoveredIndex(null)}
+          onTouchStart={() => setHoveredIndex(0)}
+          onTouchEnd={() => setHoveredIndex(null)}
         >
-          {cards.map(card => (
-            <Card key={card.id} card={card} onKnowMore={onKnowMore} />
+          {displayCards.map((card, index) => (
+            <Card 
+              key={`${card.id}-${index}`}
+              card={card} 
+              onKnowMore={onKnowMore}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-const Card = memo(({ card: { id, url, title }, onKnowMore }) => (
+const Card = memo(({ card: { id, url, title }, onKnowMore, onMouseEnter, onMouseLeave }) => (
   <motion.div 
-    className="flex flex-col w-[350px] mt-20"
+    className="flex flex-col w-[350px] mt-20 flex-shrink-0"
     style={{ y: id % 2 === 0 ? -40 : 0 }}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
   >
     <div className="group relative h-[400px] overflow-hidden bg-neutral-200 rounded-3xl">
       <div 
