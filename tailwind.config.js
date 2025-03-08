@@ -25,7 +25,9 @@ export default {
         }
         
       },
-      
+      screens: {
+        '3xl': '1600px', // Custom extra small breakpoint
+      },
       
     },
   },
