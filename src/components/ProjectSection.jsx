@@ -102,10 +102,10 @@ const ProjectSection = () => {
         "• Surrounded by natural beauty and greenery"
       ],
       highlights: [
-        "Mumbai Goa Four-Lane Highway",
-        "CSMT-Raha Local Train Expansion",
-        "Mumbai Multimodal Corridor (Virar-Alibag)",
-        "Ro-ro Ferry System"
+        "Mumbai Goa Four Lane highway",
+        "Mumbai Multimodal Corridor from Virar to Alibag",
+        "Internal Road connectivity",
+        "Mahad MIDC, Roha MIDC, Vile Bagad MIDC"
       ],
       details: [
         { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" },
@@ -114,7 +114,7 @@ const ProjectSection = () => {
     },
     {
       id: 4,
-      title: "Smarath Hills",
+      title: "Samarth Hills",
       type: "Residential Plot",
       rating: "4.5",
       mainImage: samimg1,
@@ -127,10 +127,10 @@ const ProjectSection = () => {
         "• Backed by government projects"
       ],
       highlights: [
-        "Mumbai Goa Four-Lane Highway",
-        "Mumbai Multimodal Corridor",
-        "CSMT-Raha Local Expansion",
-        "Ro-Ro Ferry System"
+        "Chipi Airport",
+        "Mumbai Goa 4 Lane Highway",
+        "Kokan Railways",
+        "Swamidhyan Mandir Meditation Center"
       ],
       details: [
         { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" },
@@ -139,7 +139,7 @@ const ProjectSection = () => {
     },
     {
       id: 5,
-      title: "The Fram Dale",
+      title: "The Farm Dale",
       type: "Residential Plot",
       rating: "4.5",
       mainImage: farmimg1,
@@ -153,9 +153,10 @@ const ProjectSection = () => {
         "• Excellent Investment & Weekend Gateway"
       ],
       highlights: [
-        "30 mins from City Center",
-        "10 mins from Nearest Railway Station",
-        "Surrounded by Natural Lakes & Hills"
+        "Water Connection to Individual Plots",
+        "Electricity up to Plot",
+        "60 km approx. from Navi Mumbai",
+        "Mumbai Goa Four Lane highway"
       ],
       details: [
         { price: "₹X lakhs", area: "5000 Sq.ft", type: "Residential Plot" },
@@ -180,7 +181,8 @@ const ProjectSection = () => {
       highlights: [
         "10 mins from the Beach",
         "1 hour from Mumbai-Goa Highway",
-        "2 hours from Navi Mumbai International Airport"
+        "2 hours from Navi Mumbai International Airport",
+        "Gardern For Function"
       ],
       details: [
         { price: "₹X lakhs", area: "20 Guntha (20,000 SQ. FT)", type: "Residential Plot" },
