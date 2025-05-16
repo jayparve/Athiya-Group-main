@@ -1,5 +1,4 @@
-
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
@@ -10,13 +9,16 @@ import ServicePage from './pages/ServicePage';
 import ScrollToTop from './components/ScrollToTop';
 import ContactUsPage from './pages/ContactusPage';
 import GalleryPage from "./components/GalleryPage"
-
+import LandingPage from "./pages/LandingPage"
 
 export default function App() {
+  const location = useLocation();
+  const isLandingPage = location.pathname === '/landingpage';
+
   return (
     <div>
-      <Navbar />
-        <ScrollToTop/>
+      {!isLandingPage && <Navbar />}
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
@@ -25,8 +27,9 @@ export default function App() {
         <Route path="/mahamumbai" element={<MahaMumbai />} />
         <Route path="/contactus" element={<ContactUsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/landingpage" element={<LandingPage />} />
       </Routes>
-    <Footer/>
+    {!isLandingPage && <Footer/>}
     </div>
   );
 }
