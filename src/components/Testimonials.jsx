@@ -80,7 +80,7 @@ const Testimonials = () => {
             <Quote className="w-10 h-10 text-gray-800" />
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            What Our Users Say About Us
+            What Our Customers Say About Us
           </h2>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto">
             Discover why our clients trust us with their real estate journey

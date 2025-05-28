@@ -7,7 +7,9 @@ import GallerySection from '../components/landingpage/GallerySection';
 import LocationSection from '../components/landingpage/LocationSection';
 import TeamSection from '../components/landingpage/TeamSection';
 import PricingSection from '../components/landingpage/PricingSection';
-import TestimonialsSection from '../components/landingpage/TestimonialsSection';
+import PlotData from '../components/landingpage/plotData';
+import Testimonials from '../components/Testimonials';
+import Footer from '../components/Footer';
 
 const LandingPage = () => {
   return (
@@ -19,24 +21,30 @@ const LandingPage = () => {
         <div id="benefits">
           <BenefitsSection />
         </div>
+        <div id="benefits">
+          <PlotData />
+        </div>
         <div id="gallery">
           <GallerySection />
         </div>
         <div id="testimonials">
-          <TestimonialsSection />
+          <Testimonials />
         </div>
-        <div id="pricing">
+        {/* <div id="pricing">
           <PricingSection />
-        </div>
-        <div id="calculator">
+        </div> */}
+        {/* <div id="calculator">
           <LandInvestmentCalculator />
-        </div>
+        </div> */}
         <div id="location">
           <LocationSection />
         </div>
         <div id="team">
           <TeamSection />
         </div>
+        <footer>
+          <Footer />
+        </footer>
     
     </div>
   );

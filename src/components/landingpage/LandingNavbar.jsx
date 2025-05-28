@@ -109,7 +109,7 @@ const Navbar = () => {
             <div onClick={() => scrollToSection('home')} className={linkClass('home')}>Home</div>
             <div onClick={() => scrollToSection('benefits')} className={linkClass('benefits')}>Benefits</div>
             <div onClick={() => scrollToSection('gallery')} className={linkClass('gallery')}>Gallery</div>
-            <div onClick={() => scrollToSection('pricing')} className={linkClass('pricing')}>Pricing</div>
+            {/* <div onClick={() => scrollToSection('pricing')} className={linkClass('pricing')}>Pricing</div> */}
             <div onClick={() => scrollToSection('testimonials')} className={linkClass('testimonials')}>Testimonials</div>
             <div onClick={() => scrollToSection('location')} className={linkClass('location')}>Location</div>
             <div onClick={() => scrollToSection('team')} className={linkClass('team')}>Team</div>
@@ -123,7 +123,7 @@ const Navbar = () => {
             <div onClick={() => scrollToSection('home')} className={linkClass('home')}>Home</div>
             <div onClick={() => scrollToSection('benefits')} className={linkClass('benefits')}>Benefits</div>
             <div onClick={() => scrollToSection('gallery')} className={linkClass('gallery')}>Gallery</div>
-            <div onClick={() => scrollToSection('pricing')} className={linkClass('pricing')}>Pricing</div>
+            {/* <div onClick={() => scrollToSection('pricing')} className={linkClass('pricing')}>Pricing</div> */}
             <div onClick={() => scrollToSection('testimonials')} className={linkClass('testimonials')}>Testimonials</div>
             <div onClick={() => scrollToSection('location')} className={linkClass('location')}>Location</div>
             <div onClick={() => scrollToSection('team')} className={linkClass('team')}>Team</div>

@@ -66,7 +66,7 @@ const Hero = () => {
     img.src = bgimgweb;
     img.onload = () => setIsLoaded(true);
 
-    return () => {
+    return () => {  
       window.removeEventListener('resize', checkMobile);
       if (timeoutId) {
         clearTimeout(timeoutId);
@@ -130,13 +130,27 @@ const Hero = () => {
                   <p className="text-sm md:text-base">Invest in the Future of Mumbai</p>
                 </div>
 
-                <div className='flex flex-col gap-10  '>
+                <div className='flex flex-col gap-10'>
                 <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
                   Secure Your Smart & Sustainable Plot in KSC New Town
                 </h1>
                 <h2 className="text-xl md:text-2xl text-white font-light">
                 Where Smart Living Meets Smart Returns
                 </h2>
+                <motion.div
+                  variants={buttonVariant}
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap="tap"
+                  className="mt-4"
+                >
+                  <Link to="/plots" className="inline-flex items-center bg-yellow-400 text-gray-900 font-medium px-8 py-3 rounded-lg transition duration-300">
+                    View Plots
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                </motion.div>
                 </div>
               </motion.div>
             </div>

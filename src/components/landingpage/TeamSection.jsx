@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 import anand from '../../assets/anandkamble.jpg';
+import swetamestry from "../../assets/shewtamestry.jpeg"
+import premanandkamble from "../../assets/Premanand-Kamble.jpg"
 
 
 const TeamSection = () => {
@@ -17,30 +19,21 @@ const TeamSection = () => {
     },
     {
       id: 2,
-      name: "Priya Patel",
+      name: "Shewta Mestry",
       role: "Chief Operating Officer",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+      image: swetamestry,
       bio: "Priya oversees all operational aspects of Athiya Group, ensuring timely execution of projects with highest quality standards.",
       linkedin: "https://linkedin.com/",
       email: "priya@athiyagroup.com"
     },
     {
       id: 3,
-      name: "Vikram Mehta",
+      name: "Premanand Kamble",
       role: "Head of Architecture",
-      image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+      image: premanandkamble,
       bio: "An award-winning architect known for creating sustainable and aesthetically pleasing designs that harmonize with nature.",
       linkedin: "https://linkedin.com/",
       email: "vikram@athiyagroup.com"
-    },
-    {
-      id: 4,
-      name: "Ananya Desai",
-      role: "Marketing Director",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      bio: "Leading our marketing initiatives with innovative strategies to showcase our premium properties to the right audience.",
-      linkedin: "https://linkedin.com/",
-      email: "ananya@athiyagroup.com"
     }
   ];
 
@@ -82,7 +75,7 @@ const TeamSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {teamMembers.map((member) => (
             <motion.div
@@ -101,9 +94,7 @@ const TeamSection = () => {
               
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-yellow-600 font-medium text-sm mb-4">{member.role}</p>
-                
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">{member.bio}</p>
+    
                 
                 <div className="flex space-x-3">
                   <a 

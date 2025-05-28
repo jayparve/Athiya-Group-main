@@ -1,54 +1,158 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef(null);
 
   // Gallery images - replace with your actual images later
   const galleryImages = [
     {
-      url: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
-      title: "Premium Land Plots in KSC New Town",
-      category: "Plot"
+      url: "/Landing_photos/1.jpg"
     },
     {
-      url: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
-      title: "Smart Infrastructure Development",
-      category: "Development"
+      url: "/Landing_photos/2.jpg"
     },
     {
-      url: "https://images.unsplash.com/photo-1543470373-e055b73a8f29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
-      title: "Sustainable Green Spaces",
-      category: "Amenity"
+      url: "/Landing_photos/3.jpg"
     },
     {
-      url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
-      title: "Premier Property Location",
-      category: "Location"
+      url: "/Landing_photos/4.jpg"
     },
     {
-      url: "https://images.unsplash.com/photo-1542889601-399c4f3a8402?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
-      title: "Modern Living Development",
-      category: "Development"
+      url: "/Landing_photos/5.jpg"
     },
     {
-      url: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
-      title: "Gated Community Experience",
-      category: "Security"
+      url: "/Landing_photos/6.jpg"
     },
     {
-      url: "https://images.unsplash.com/photo-1643226279732-c3f9049571c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
-      title: "Investment Ready Plots",
-      category: "Plot"
+      url: "/Landing_photos/7.jpg"
     },
     {
-      url: "https://images.unsplash.com/photo-1566662260816-e970d7df7d29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
-      title: "Recreation Facilities",
-      category: "Amenity"
+        url: "/Landing_photos/8.jpg"
+    },
+    {
+        url: "/Landing_photos/9.jpg"
+    },
+    {
+        url: "/Landing_photos/10.jpg"
+    },
+    {
+        url: "/Landing_photos/11.jpg"
+    },
+    {
+        url: "/Landing_photos/12.jpg"
+    },
+    {
+        url: "/Landing_photos/13.jpg"
+    },
+    {
+        url: "/Landing_photos/14.jpg"
+    },
+    {
+        url: "/Landing_photos/15.jpg"
+    },
+    {
+        url: "/Landing_photos/16.jpg"
+    },
+    {
+        url: "/Landing_photos/17.jpg"
+    },
+    {
+        url: "/Landing_photos/18.jpg"
+    },
+    {
+        url: "/Landing_photos/19.jpg"
+    },
+    {
+        url: "/Landing_photos/20.jpg"
+    },
+    {
+        url: "/Landing_photos/21.jpg"
+    },
+    {
+        url: "/Landing_photos/22.jpg"
+    },
+    {
+        url: "/Landing_photos/23.jpg"
+    },
+    {
+        url: "/Landing_photos/24.jpg"
+    },
+    {
+        url: "/Landing_photos/25.jpg"
+    },
+    {
+        url: "/Landing_photos/26.jpg"
+    },
+    {
+        url: "/Landing_photos/27.jpg"
+    },
+    {
+        url: "/Landing_photos/28.jpg"
+    },
+    {
+        url: "/Landing_photos/29.jpg"
+    },
+    {
+        url: "/Landing_photos/30.jpg"
     }
   ];
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    const scrollWidth = scrollContainer.scrollWidth;
+    const clientWidth = scrollContainer.clientWidth;
+    const maxScroll = scrollWidth - clientWidth;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5; // pixels per frame - reduced from 1 to 0.5 for slower scroll
+    let animationId;
+
+    const autoScroll = () => {
+      scrollPosition += scrollSpeed;
+      
+      if (scrollPosition >= maxScroll) {
+        scrollPosition = 0;
+      }
+      
+      scrollContainer.scrollLeft = scrollPosition;
+      animationId = requestAnimationFrame(autoScroll);
+    };
+
+    // Start auto-scroll after a delay
+    const timeoutId = setTimeout(() => {
+      animationId = requestAnimationFrame(autoScroll);
+    }, 2000);
+
+    // Pause on hover
+    const handleMouseEnter = () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+
+    const handleMouseLeave = () => {
+      animationId = requestAnimationFrame(autoScroll);
+    };
+
+    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
+      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
@@ -72,7 +176,7 @@ const GallerySection = () => {
   };
 
   // Handle keyboard navigation
-  React.useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (!selectedImage) return;
       
@@ -95,40 +199,6 @@ const GallerySection = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedImage, currentIndex]);
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5 }
-    }
-  };
-
-  const categories = [...new Set(galleryImages.map(img => img.category))];
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [filteredImages, setFilteredImages] = useState(galleryImages);
-
-  const filterImages = (category) => {
-    setActiveFilter(category);
-    if (category === 'All') {
-      setFilteredImages(galleryImages);
-    } else {
-      setFilteredImages(galleryImages.filter(img => img.category === category));
-    }
-  };
-
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,60 +212,37 @@ const GallerySection = () => {
           </p>
         </div>
 
-        {/* Filter buttons */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
-          <button 
-            onClick={() => filterImages('All')}
-            className={`px-4 py-2 rounded-full transition-colors ${activeFilter === 'All' 
-              ? 'bg-yellow-500 text-white' 
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+        {/* Horizontal Scrolling Gallery */}
+        <div className="relative">
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-4 overflow-x-auto scrollbar-hide pb-4"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitScrollbar: { display: 'none' }
+            }}
           >
-            All
-          </button>
-          {categories.map((category) => (
-            <button 
-              key={category}
-              onClick={() => filterImages(category)}
-              className={`px-4 py-2 rounded-full transition-colors ${activeFilter === category 
-                ? 'bg-yellow-500 text-white' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Gallery Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-        >
-          {filteredImages.map((image, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="overflow-hidden rounded-lg cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300"
-              onClick={() => openLightbox(galleryImages.indexOf(image))}
-            >
-              <div className="relative group h-64">
+            {/* Duplicate images for seamless loop */}
+            {[...galleryImages, ...galleryImages].map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex-shrink-0 w-80 h-64 overflow-hidden rounded-lg cursor-pointer shadow-md transition-shadow duration-300"
+                onClick={() => openLightbox(index % galleryImages.length)}
+              >
                 <img 
                   src={image.url} 
-                  alt={image.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt="Gallery image" 
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 text-white">
-                    <div className="text-xs uppercase tracking-wider mb-1">{image.category}</div>
-                    <h3 className="font-medium">{image.title}</h3>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
         {/* Lightbox */}
         <AnimatePresence>
@@ -218,22 +265,15 @@ const GallerySection = () => {
                   <FaTimes size={24} />
                 </button>
                 
-                <div className="relative">
-                  <motion.img 
-                    key={currentIndex}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    src={selectedImage.url} 
-                    alt={selectedImage.title} 
-                    className="w-full object-contain max-h-[80vh]"
-                  />
-                  
-                  <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 text-white">
-                    <div className="text-sm text-yellow-400">{selectedImage.category}</div>
-                    <h3 className="text-xl font-medium">{selectedImage.title}</h3>
-                  </div>
-                </div>
+                <motion.img 
+                  key={currentIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  src={selectedImage.url} 
+                  alt="Gallery image" 
+                  className="w-full object-contain max-h-[80vh]"
+                />
                 
                 <button 
                   className="absolute left-0 top-1/2 -translate-y-1/2 -ml-12 text-white hover:text-yellow-400"
@@ -274,6 +314,16 @@ const GallerySection = () => {
           </a>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };
