@@ -41,7 +41,7 @@
         form.action = GOOGLE_FORM_ACTION;
         form.target = "hidden_iframe";
 
-        //add form fields
+        //add form  fields
         const formFields = {
           "entry.1183939645": formData.fullName,
           "entry.2105092524": formData.number,
