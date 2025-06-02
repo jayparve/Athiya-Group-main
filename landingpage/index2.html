@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athiya Developers Presents: Invest in KSC New Town, Raigad (Third Mumbai) – Your Future Awaits!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'merriweather': ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        'athiya-yellow': '#ffc107',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navbar transition styles */
+        nav {
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+        }
+        
+        /* Custom modal styles */
+        #customModal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Mobile nav animation */
+        #mobile-nav {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        #mobile-nav:not(.hidden) {
+            max-height: 500px;
+        }
+        
+        /* Hover effects for mobile nav links */
+        .mobile-nav-link:hover .w-2 {
+            opacity: 1 !important;
+        }
+        
+        /* Smooth underline animation for desktop nav */
+        .nav-link span {
+            transition: width 0.3s ease;
+        }
+        
+        /* Logo animation */
+        .logo-container:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter">
+
+    <nav class="bg-white/95 backdrop-blur-md shadow-lg fixed w-full z-50 top-0 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo/Brand -->
+                <div class="flex items-center space-x-2 logo-container">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">A</span>
+                    </div>
+                    <a href="#" class="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-indigo-900 bg-clip-text text-transparent">
+                        Athiya Developers
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#overview" class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-all duration-300 relative group">
+                        KSC Overview
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#benefits" class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-all duration-300 relative group">
+                        Benefits
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-all duration-300 relative group">
+                        Testimonials
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#specifics" class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-all duration-300 relative group">
+                        Why KSC?
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#pricing" class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-all duration-300 relative group">
+                        Pricing Guide
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#cta" class="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-indigo-800 font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                        Invest Now
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button id="nav-toggle" class="text-gray-700 hover:text-indigo-600 focus:outline-none focus:text-indigo-600 transition-colors duration-300">
+                        <svg id="menu-icon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                        <svg id="close-icon" class="w-7 h-7 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-nav" class="lg:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-lg">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#overview" class="mobile-nav-link block py-3 px-4 text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition-all duration-300">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-2 h-2 bg-indigo-600 rounded-full opacity-0 transition-opacity duration-300"></div>
+                        <span>KSC Overview</span>
+                    </div>
+                </a>
+                <a href="#benefits" class="mobile-nav-link block py-3 px-4 text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition-all duration-300">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-2 h-2 bg-indigo-600 rounded-full opacity-0 transition-opacity duration-300"></div>
+                        <span>Benefits</span>
+                    </div>
+                </a>
+                <a href="#testimonials" class="mobile-nav-link block py-3 px-4 text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition-all duration-300">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-2 h-2 bg-indigo-600 rounded-full opacity-0 transition-opacity duration-300"></div>
+                        <span>Testimonials</span>
+                    </div>
+                </a>
+                <a href="#specifics" class="mobile-nav-link block py-3 px-4 text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition-all duration-300">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-2 h-2 bg-indigo-600 rounded-full opacity-0 transition-opacity duration-300"></div>
+                        <span>Why KSC?</span>
+                    </div>
+                </a>
+                <a href="#pricing" class="mobile-nav-link block py-3 px-4 text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition-all duration-300">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-2 h-2 bg-indigo-600 rounded-full opacity-0 transition-opacity duration-300"></div>
+                        <span>Pricing Guide</span>
+                    </div>
+                </a>
+                <a href="#cta" class="block mt-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-indigo-800 font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 transform hover:scale-105">
+                    Invest Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-16 pb-16  md:pb-24 bg-white">
+        <div class="container mx-auto ">
+            <div class="flex flex-col items-center text-center">
+                <!-- Image - Top Section (1/3 height) -->
+                <div class="w-full mb-8">
+                    <img src="mumbai-skyline-2.jpg" alt="Mumbai Skyline and KSC New Town Vision" class=" shadow-2xl w-full h-64 md:h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9fa8da/3c366b?text=Mumbai+Skyline+%26+KSC+Vision';">
+                    <p class="text-sm text-gray-500 mt-2 text-center">Vision of KSC New Town - Third Mumbai</p>
+                </div>
+                
+                <!-- Text Content - Below Image -->
+                <div class="max-w-4xl">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-black font-merriweather">Athiya Developers Presents: KSC New Town, Raigad (Third Mumbai)</h1>
+                    <p class="text-2xl md:text-3xl font-semibold mb-6 text-black">Invest in Maharashtra's $300 Billion Future!</p>
+                    <p class="text-lg md:text-xl lg:text-2xl mb-8 text-gray-700">
+                        See Raigad change before your eyes! With <span class="text-athiya-yellow font-semibold">Athiya Developers</span>, discover KSC New Town – more than just a plan, it's a carefully designed future. Backed by huge new infrastructure, strong government action, and major private investments, this is your chance to own a piece of tomorrow, today.
+                    </p>
+                    <a href="#cta" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-10 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border-2 border-yellow-500 hover:border-yellow-600">Secure Your Land with Athiya Developers!</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="overview" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12 font-merriweather">
+                <span class="inline-block relative pb-2">
+                    "They Said It Couldn't Be Done. Now, 'Third Mumbai' is Taking Shape in Raigad."
+                    <span class="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-15 h-0.5 bg-athiya-yellow"></span>
+                </span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/9fa8da/3c366b?text=MTHL+&+NMIA+Montage" alt="Infrastructure Montage: MTHL, NMIA, KSC Location" class="rounded-lg shadow-xl w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Available';">
+                    <p class="text-sm text-gray-600 mt-2 text-center">Conceptual: MTHL, NMIA render, KSC strategic location</p>
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-lg text-gray-700 mb-4">This isn't just talk. KSC New Town (covering areas like Karnala, Sai, Chirner) – also known as 'Third Mumbai' – is really happening. <span class="athiya-yellow font-semibold">Athiya Developers</span> brings you this opportunity in a vast new development of <strong>324 sq km</strong> in a key part of Raigad. Led by MMRDA (the Mumbai Metropolitan Region Development Authority, a government body planning the region's growth), this brand-new city (built on fresh land) is making the Mumbai area bigger and better.</p>
+                    <p class="text-lg text-gray-700 mb-6"><em>You</em> are looking at a rare chance to invest with <span class="athiya-yellow font-semibold">Athiya Developers</span> in an area that is central to Maharashtra's big plans for economic growth. The groundwork is laid, money is flowing in, and the future is being built <em>right now</em>.</p>
+                    <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Why KSC New Town with Athiya Developers? Why NOW?</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-yellow-500 mr-2">&#10004;</span><strong>Amazing Travel Connections:</strong> The MTHL sea bridge is open! The new Navi Mumbai International Airport (NMIA) is on track (expected opening 2025-26). Plus, new rail lines (Panvel-Karjat) and a major new transport route (Virar-Alibaug Multimodal Corridor for easy travel by road, rail, and more).</li>
+                        <li class="flex items-start"><span class="text-yellow-500 mr-2">&#10004;</span><strong>Government's Strong Support:</strong> A key part of NITI Aayog's (the government's main policy group) $300B vision for the Mumbai region. CIDCO (City and Industrial Development Corporation) & MMRDA are investing heavily in new facilities (e.g., MMRDA has access to ₹4.07 lakh cr for development).</li>
+                        <li class="flex items-start"><span class="text-yellow-500 mr-2">&#10004;</span><strong>Top Investors Believe in It:</strong> Companies like Blackstone (investing ~$5B for KSC), Adani Realty (developing a 1,000-acre township), Reliance Industries (investing in ~3,750 acres), Godrej Properties, and L&T Realty are all involved in the broader KSC region. <span class="athiya-yellow font-semibold">Athiya Developers</span> helps you tap into this growth.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12 font-merriweather">
+                <span class="inline-block relative pb-2">
+                    "This Isn't Just Land. It's Your Foundation in a Major Growth Center, Guided by Athiya Developers."
+                    <span class="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-15 h-0.5 bg-athiya-yellow"></span>
+                </span>
+            </h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-2xl mx-auto">Investing in KSC New Town, Raigad, through <span class="text-athiya-yellow font-semibold">Athiya Developers</span>, gives you more than just a plot; it gives you a share in a fast-growing economic hub. Here's how your investment is set up for growth:</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
+                    <div class="flex items-center justify-center w-12 h-12 bg-yellow-400 text-indigo-700 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Key Business Zones</h3>
+                    <p class="text-gray-600 text-sm">Be part of an area becoming a major center for Data Centers (a 500-acre park for internet infrastructure), a top spot for making electronics and home appliances, and a central hub for transport and delivery services (Logistics).</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
+                     <div class="flex items-center justify-center w-12 h-12 bg-yellow-400 text-indigo-700 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Well-Planned & Secure Development</h3>
+                    <p class="text-gray-600 text-sm">Invest with confidence thanks to organized Town Planning Schemes (official plans for development) and MIDC's (Maharashtra Industrial Development Corporation) 'Ready-to-Start' industrial areas, ensuring a safe and orderly environment.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
+                     <div class="flex items-center justify-center w-12 h-12 bg-yellow-400 text-indigo-700 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.372 3.514-1.414 3.514H4.828c-1.786 0-2.674-2.254-1.414-3.514l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Great Lifestyle Destination</h3>
+                    <p class="text-gray-600 text-sm">Planned with an "EduCity" (education hub), "Innovation City" (for new ideas & tech), and "MediCity" (health facilities), creating a lively place with skilled people and a high quality of life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12 font-merriweather">
+                <span class="inline-block relative pb-2">
+                    Voices of Confidence: Why Choose Athiya Developers
+                    <span class="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-15 h-0.5 bg-athiya-yellow"></span>
+                </span>
+            </h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-athiya-yellow transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
+                    <p class="italic text-gray-700">"Investing in land at KSC New Town through Athiya Developers was a seamless experience. Their team was transparent, professional, and helped me understand the immense potential of this region. I'm excited for the future!"</p>
+                    <p class="font-semibold text-indigo-800 mt-3">- R. Sharma, Investor (Placeholder)</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-athiya-yellow transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
+                    <p class="italic text-gray-700">"As a real estate analyst, I see KSC New Town as a game-changer for the MMR. Athiya Developers is well-positioned to guide investors towards strategic land parcels in this burgeoning corridor. The infrastructure development is truly impressive."</p>
+                    <p class="font-semibold text-indigo-800 mt-3">- Priya K., Real Estate Analyst (Placeholder)</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-athiya-yellow transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl lg:col-span-2 lg:mx-auto lg:max-w-xl">
+                     <p class="italic text-gray-700">"We were looking for a place to build our future home, away from the city's hustle but still connected. Athiya Developers showed us options in KSC New Town that perfectly matched our vision. Their knowledge of the area is commendable."</p>
+                    <p class="font-semibold text-indigo-800 mt-3">- The Deshpande Family, Future Residents (Placeholder)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-semibold text-gray-700 mb-8">KSC New Town: Backed by Leading Organisations & Global Investors</h3>
+            <p class="text-md text-gray-600 mb-8 max-w-2xl mx-auto"><span class="text-athiya-yellow font-semibold">Athiya Developers</span> helps you access opportunities within this larger, government-supported and investor-backed initiative.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">MMRDA Logo</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">CIDCO Logo</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">NITI Aayog Logo</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">Blackstone Logo</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">Adani Realty Logo</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">Reliance Logo</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">Godrej Properties Logo</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">L&T Realty Logo</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">Govt. of Maharashtra</div>
+                <div class="bg-slate-200 border border-dashed border-slate-300 text-slate-600 flex items-center justify-center text-xs text-center rounded-md h-16">MIDC Logo</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specifics" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12 font-merriweather">
+                <span class="inline-block relative pb-2">
+                    "From Plan to Reality: Raigad's KSC New Town is Where Smart Money is Moving."
+                    <span class="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-15 h-0.5 bg-athiya-yellow"></span>
+                </span>
+            </h2>
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x450/d1d5db/4a5568?text=Conceptual+KSC+Development" alt="Conceptual Before/After Land Transformation" class="rounded-lg shadow-xl w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x450/cccccc/ffffff?text=Image+Not+Available';">
+                     <p class="text-sm text-gray-600 mt-2 text-center">Conceptual: KSC New Town Development Zones</p>
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-lg text-gray-700 mb-6"><span class="text-athiya-yellow font-semibold">Athiya Developers</span> believes in being clear. Consider these details about the KSC New Town project:</p>
+                    <ul class="space-y-3 text-gray-700 mb-6 bg-indigo-50 p-6 rounded-lg shadow">
+                        <li class="flex items-start"><strong class="text-indigo-600 w-40 shrink-0">Size of Project:</strong> KSC New Town (also called Mumbai 3.0) - <strong>324 sq km, 124 villages</strong>.</li>
+                        <li class="flex items-start"><strong class="text-indigo-600 w-40 shrink-0">Key Organisations:</strong> MMRDA (as the New Town Development Authority - NTDA), CIDCO, MIDC.</li>
+                        <li class="flex items-start"><strong class="text-indigo-600 w-40 shrink-0">Main Business Areas:</strong> Data Centers, Electronics/Appliance Manufacturing, Logistics.</li>
+                        <li class="flex items-start"><strong class="text-indigo-600 w-40 shrink-0">CIDCO NAINA Update:</strong> ₹2,550 cr roadworks have started, with another ₹5,000 cr planned.</li>
+                        <li class="flex items-start"><strong class="text-indigo-600 w-40 shrink-0">Major KSC Investment Example:</strong> Blackstone signed a formal agreement (MoU) for ₹5,127 cr in Logistics, and around ~$5 Billion total for KSC.</li>
+                    </ul>
+                    <p class="text-lg text-gray-700"><strong>What this means for your land acquired through <span class="text-athiya-yellow font-semibold">Athiya Developers</span>:</strong> As these major projects and business zones grow, the real worth of well-placed land in KSC New Town is set to increase greatly. You are investing in a carefully planned area designed for strong economic activity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12 font-merriweather">
+                <span class="inline-block relative pb-2">
+                    Investment Value & Example Land Rates in KSC New Town
+                    <span class="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-15 h-0.5 bg-athiya-yellow"></span>
+                </span>
+            </h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-3xl mx-auto">
+                Investing in KSC New Town is a smart move into a high-growth area. <span class="text-athiya-yellow font-semibold">Athiya Developers</span> can guide you through the options. While specific plot prices depend on exact location, type of zone (like for homes, shops, factories, or ready-to-build plots), FSI (Floor Space Index - how much you can build), and size, the region has huge potential for value increase. The table below gives an *idea* of possible land rates. <strong class="text-red-600">Actual rates are set by planning authorities like CIDCO/MMRDA and market conditions. Please contact <span class="text-athiya-yellow font-semibold">Athiya Developers</span> for the latest official information and specific plot details.</strong>
+            </p>
+            <div class="overflow-x-auto bg-white shadow-xl rounded-lg p-2 md:p-6">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-indigo-600">
+                        <tr>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Taluka (Sub-district)</th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Village (Example)</th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Example Rate (Per Guntha*)</th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Zone Type (Example)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Pen (पेण)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Rave (रावे)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900 font-medium">₹ <span class="text-red-500">[Example: 4 Lakhs - Contact Athiya Developers]</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">Residential / Plotted</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Uran (उरण)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Chirner (चिर्णेर)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900 font-medium">₹ <span class="text-red-500">[Example: 6 Lakhs - Contact Athiya Developers]</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">Mixed Use / Commercial</td>
+                        </tr>
+                         <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Uran (उरण)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Sarde (सारडे)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900 font-medium">₹ <span class="text-red-500">[Example: 7 Lakhs - Contact Athiya Developers]</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">Industrial / Logistics</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Panvel (पनवेल)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Kelvane (केळवणे)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900 font-medium">₹ <span class="text-red-500">[Example: 5 Lakhs - Contact Athiya Developers]</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">Agricultural / Future Urbanizable</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Panvel (पनवेल)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Sai (साई)</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900 font-medium">₹ <span class="text-red-500">[Example: 6 Lakhs - Contact Athiya Developers]</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">Residential Zone</td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+            <p class="mt-4 text-center text-xs text-gray-500">*1 Guntha is a traditional unit of land measurement, approximately 1089 sq. ft. or 101 sq. m.</p>
+            <p class="mt-6 text-center text-sm text-gray-600">Detailed master plans and zoning rules by MMRDA, CIDCO, and other relevant authorities will give more clarity on land use and development potential. We encourage you to get in touch with <span class="text-athiya-yellow font-semibold">Athiya Developers</span> for the most current and specific information.</p>
+        </div>
+    </section>
+
+    <section id="cta" class="py-16 bg-indigo-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-yellow-400 font-merriweather">
+                <span class="inline-block relative pb-2">
+                    Don't Just Watch the Future Unfold. Own a Part of It with Athiya Developers.
+                    <span class="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-15 h-0.5 bg-athiya-yellow"></span>
+                </span>
+            </h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">The KSC New Town (Third Mumbai) transformation is a landmark opportunity. Are you ready to partner with <span class="text-athiya-yellow font-semibold">Athiya Developers</span> and be a part of it?</p>
+            <p class="text-lg md:text-xl mb-4">This is for:</p>
+            <ul class="list-disc list-inside text-left max-w-md mx-auto mb-8 space-y-2 text-indigo-100">
+                <li>Investors looking for smart opportunities with high growth potential.</li>
+                <li>Individuals planning dream homes in a city of the future.</li>
+                <li>Businesses aiming to set up in a prime economic zone.</li>
+            </ul>
+            <p class="text-lg md:text-xl mb-10">KSC New Town in Raigad offers you the canvas. <span class="text-athiya-yellow font-semibold">Athiya Developers</span> provides the expertise. The time to act is now.</p>
+
+            <div class="bg-white text-gray-800 p-8 rounded-lg shadow-2xl max-w-lg mx-auto">
+                <h3 class="text-2xl font-bold text-indigo-700 mb-6">Explore Land Opportunities with Athiya Developers!</h3>
+                <form id="inquiryForm">
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="landType" class="block text-sm font-medium text-gray-700 mb-1">Type of Land Interested In</label>
+                        <select id="landType" name="landType" class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="residential">Residential (for Homes)</option>
+                            <option value="commercial">Commercial (for Shops/Offices)</option>
+                            <option value="industrial">Industrial (for Factories/Warehouses)</option>
+                            <option value="plotted_development">Plotted Development (Ready-to-Build Plots)</option>
+                            <option value="undecided">Undecided / More Info</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="plotSize" class="block text-sm font-medium text-gray-700 mb-1">Preferred Plot Size (e.g., Guntha, Acres, Sq Ft)</label>
+                        <input type="text" id="plotSize" name="plotSize" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-800 font-bold py-3 px-4 rounded-lg text-lg transition duration-300 transform hover:scale-105">Request More Information from Athiya Developers</button>
+                </form>
+                 <div id="form-message" class="mt-4 text-sm"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-2">&copy; <span id="currentYear"></span> Athiya Developers. All Rights Reserved.</p>
+            <p class="mb-4">
+                <a href="#privacy" class="hover:text-yellow-400 transition duration-300">Privacy Policy</a> | 
+                <a href="#terms" class="hover:text-yellow-400 transition duration-300">Terms of Use</a> | 
+                <a href="#contact" class="hover:text-yellow-400 transition duration-300">Contact Athiya Developers</a>
+            </p>
+            <p class="text-xs text-gray-400 max-w-2xl mx-auto">
+                Disclaimer: Information presented by Athiya Developers is based on publicly available data and official reports regarding KSC New Town. All investments are subject to market risks and official approvals. Buyers should do their own research (due diligence) and check all details with the planning authorities (MMRDA, CIDCO, etc.) before investing. Land availability, pricing, and development plans can change based on official updates. Images are for illustration only. Athiya Developers acts as a facilitator for land opportunities in the KSC New Town region.
+            </p>
+        </div>
+    </footer>
+
+    <div id="customModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300 ease-in-out">
+        <div class="bg-white p-8 rounded-lg shadow-2xl text-center max-w-sm w-11/12">
+            <p id="modalMessageText" class="mb-6 text-lg text-gray-800">Message goes here.</p>
+            <button id="modalClose" class="bg-athiya-yellow hover:bg-yellow-500 text-indigo-800 font-bold py-3 px-6 rounded-md transition-colors duration-300">OK</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+        
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        navToggle.addEventListener('click', function() {
+            mobileNav.classList.toggle('hidden');
+            
+            // Toggle icons with animation
+            if (mobileNav.classList.contains('hidden')) {
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                menuIcon.style.transform = 'rotate(0deg)';
+            } else {
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                closeIcon.style.transform = 'rotate(180deg)';
+            }
+        });
+
+        // Add hover effects for mobile nav links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                const dot = this.querySelector('.w-2.h-2');
+                if (dot) dot.style.opacity = '1';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                const dot = this.querySelector('.w-2.h-2');
+                if (dot) dot.style.opacity = '0';
+            });
+            
+            // Close mobile nav when a link is clicked
+            link.addEventListener('click', () => {
+                if (!mobileNav.classList.contains('hidden')) {
+                    mobileNav.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    menuIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('nav');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            // Add/remove background opacity based on scroll
+            if (scrollTop > 50) {
+                navbar.classList.add('bg-white');
+                navbar.classList.remove('bg-white/95');
+            } else {
+                navbar.classList.add('bg-white/95');
+                navbar.classList.remove('bg-white');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Add active state to nav links based on scroll position
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-indigo-600');
+                link.classList.add('text-gray-700');
+                const underline = link.querySelector('span');
+                if (underline) underline.style.width = '0';
+                
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('text-indigo-600');
+                    link.classList.remove('text-gray-700');
+                    const underline = link.querySelector('span');
+                    if (underline) underline.style.width = '100%';
+                }
+            });
+        });
+
+        // Modal elements
+        const customModal = document.getElementById('customModal');
+        const modalMessageText = document.getElementById('modalMessageText');
+        const modalCloseBtn = document.getElementById('modalClose');
+        const formMessageDiv = document.getElementById('form-message'); // Though not used with modal, good to have if direct messages needed
+
+
+        function showModal(message, isSuccess) {
+            modalMessageText.textContent = message;
+            // Clear previous message styling from any direct form message div
+            formMessageDiv.textContent = '';
+            formMessageDiv.className = 'mt-4 text-sm';
+
+
+            if (isSuccess) {
+                modalMessageText.className = 'modal-message text-green-700 font-semibold'; // Style for success
+            } else {
+                modalMessageText.className = 'modal-message text-red-700 font-semibold'; // Style for error
+            }
+            customModal.classList.add('active');
+        }
+
+        modalCloseBtn.addEventListener('click', function() {
+            customModal.classList.remove('active');
+        });
+
+        // Close modal if overlay is clicked
+        customModal.addEventListener('click', function(event) {
+            if (event.target === customModal) {
+                customModal.classList.remove('active');
+            }
+        });
+
+
+        document.getElementById("inquiryForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            
+            // Clear previous messages from direct form message div
+            if(formMessageDiv) formMessageDiv.textContent = ''; 
+
+            if(name && email && phone) {
+                // Simulate form submission
+                console.log("Form submitted to Athiya Developers:", { name, email, phone });
+                showModal("Thank you for your inquiry, " + name + "! Athiya Developers will get back to you soon.", true);
+                // Here you would typically send the form data to a server
+                this.reset();
+            } else {
+                let errorMessage = "Please fill in all required fields: ";
+                let missingFields = [];
+                if (!name) missingFields.push("Full Name");
+                if (!email) missingFields.push("Email Address");
+                if (!phone) missingFields.push("Phone Number");
+                errorMessage += missingFields.join(", ") + ".";
+                showModal(errorMessage, false);
+            }
+        });
+
+    </script>
+
+</body>
+</html>

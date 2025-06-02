@@ -1,38 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLeaf, FaChartLine, FaMapMarkerAlt, FaShieldAlt, FaHandHoldingUsd, FaWifi } from 'react-icons/fa';
+import { FaBuilding, FaShieldAlt, FaGraduationCap, FaIndustry, FaRoad, FaChartLine } from 'react-icons/fa';
 
 const BenefitsSection = () => {
   const benefits = [
     {
-      icon: <FaChartLine size={28} />,
-      title: "High ROI Potential",
-      description: "Historically proven 15-20% annual appreciation in developing smart townships, outperforming traditional investments."
-    },
-    {
-      icon: <FaLeaf size={28} />,
-      title: "Sustainable Living",
-      description: "Solar-powered infrastructure, rainwater harvesting systems, and green spaces designed for eco-conscious living."
-    },
-    {
-      icon: <FaWifi size={28} />,
-      title: "Smart Infrastructure",
-      description: "IoT-enabled utilities, high-speed fiber internet, and smart security systems integrated throughout the township."
-    },
-    {
-      icon: <FaMapMarkerAlt size={28} />,
-      title: "Strategic Location",
-      description: "Located in KSC New Town with excellent connectivity to Mumbai's business districts and upcoming infrastructure projects."
+      icon: <FaIndustry size={28} />,
+      title: "Strategic Economic Hubs",
+      description: "Be part of a Data Center Capital (500-acre park), a Manufacturing Powerhouse (electronics, white goods), and a Logistics Nexus."
     },
     {
       icon: <FaShieldAlt size={28} />,
-      title: "Secured Investment",
-      description: "RERA approved plots with clear titles, backed by Athiya Group's 15+ years of real estate excellence."
+      title: "Planned & Secure Development",
+      description: "Benefit from structured Town Planning Schemes (TPS) and MIDC's 'Plug & Play' industrial areas for a secure and organized future."
     },
     {
-      icon: <FaHandHoldingUsd size={28} />,
-      title: "Flexible Payment Plans",
-      description: "Customized payment options with attractive pre-launch prices and special early bird discounts."
+      icon: <FaGraduationCap size={28} />,
+      title: "Lifestyle Destination",
+      description: "Envisioned with an 'EduCity,' 'Innovation City,' and 'MediCity,' fostering a vibrant, talent-rich environment for quality living."
+    },
+    {
+      icon: <FaRoad size={28} />,
+      title: "World-Class Infrastructure",
+      description: "MTHL operational, NMIA airport (2025-26), high-speed rail connectivity, and multimodal transport corridors."
+    },
+    {
+      icon: <FaChartLine size={28} />,
+      title: "Massive Investment Backing",
+      description: "Backed by $300B MMR vision, Blackstone's $5B commitment, and major corporate investments from Adani, Reliance, and Godrej."
+    },
+    {
+      icon: <FaBuilding size={28} />,
+      title: "Government Support",
+      description: "Core to NITI Aayog's vision with MMRDA's ₹4.07 lakh crore credit line and comprehensive government backing."
     }
   ];
 
@@ -58,15 +58,17 @@ const BenefitsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Why Invest in KSC New Town?
+            <span className="relative inline-block pb-2">
+              "This Isn't Just Land. It's Your Foundation in a Major Growth Center, Guided by Athiya Developers."
+              <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-16 h-1 bg-yellow-400"></div>
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-yellow-400 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our smart and sustainable plots offer numerous advantages for both residential living and investment growth
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto mt-6">
+          Investing in KSC New Town, Raigad, through Athiya Developers, gives you more than just a plot; it gives you a share in a fast-growing economic hub. Here's how your investment is set up for growth:
           </p>
         </div>
 
@@ -81,30 +83,15 @@ const BenefitsSection = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-white rounded-xl shadow-lg p-8 transition-transform hover:scale-105 duration-300"
+              className="bg-white rounded-xl shadow-lg p-8 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl"
             >
-              <div className="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 text-yellow-600">
+              <div className="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mb-6 text-gray-700">
                 {benefit.icon}
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-              <p className="text-gray-600">{benefit.description}</p>
+              <p className="text-gray-600 text-sm">{benefit.description}</p>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <a 
-            href="#contact" 
-            className="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-medium px-8 py-4 rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
-          >
-            Book Your Plot Today
-          </a>
         </motion.div>
       </div>
     </section>

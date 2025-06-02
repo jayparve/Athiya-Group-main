@@ -27,13 +27,11 @@ const Navbar = () => {
       // Update active section based on scroll position
       const sections = [
         { id: 'home', offset: 0 },
-        { id: 'benefits', offset: 500 },
-        { id: 'gallery', offset: 1100 },
-        { id: 'pricing', offset: 1700 },
-        { id: 'testimonials', offset: 2300 },
-        { id: 'location', offset: 2900 },
-        { id: 'team', offset: 3500 },
-        { id: 'calculator', offset: 4100 }
+        { id: 'overview', offset: 500 },
+        { id: 'benefits', offset: 1100 },
+        { id: 'specifics', offset: 1700 },
+        { id: 'pricing', offset: 2300 },
+        { id: 'cta', offset: 2900 }
       ];
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -72,7 +70,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div onClick={() => scrollToSection('home')} className="flex-shrink-0 cursor-pointer">
-            <img className='h-10 w-auto' src={Logo} alt="Athiya Group" />
+            <img className='h-10 w-auto' src={Logo} alt="KSC New Town" />
           </div>
           
           {/* Mobile Menu Button */}
@@ -105,14 +103,25 @@ const Navbar = () => {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6">
-            <div onClick={() => scrollToSection('home')} className={linkClass('home')}>Home</div>
+          <div className="hidden md:flex space-x-8">
+            <div onClick={() => scrollToSection('overview')} className={linkClass('overview')}>Overview</div>
             <div onClick={() => scrollToSection('benefits')} className={linkClass('benefits')}>Benefits</div>
-            <div onClick={() => scrollToSection('gallery')} className={linkClass('gallery')}>Gallery</div>
-            {/* <div onClick={() => scrollToSection('pricing')} className={linkClass('pricing')}>Pricing</div> */}
-            <div onClick={() => scrollToSection('testimonials')} className={linkClass('testimonials')}>Testimonials</div>
-            <div onClick={() => scrollToSection('location')} className={linkClass('location')}>Location</div>
-            <div onClick={() => scrollToSection('team')} className={linkClass('team')}>Team</div>
+            <div onClick={() => scrollToSection('specifics')} className={linkClass('specifics')}>Why KSC?</div>
+            <div onClick={() => scrollToSection('pricing')} className={linkClass('pricing')}>Pricing</div>
+          </div>
+
+          {/* Invest Now Button */}
+          <div className="hidden md:block">
+            <motion.button 
+              variants={buttonVariant}
+              initial="rest"
+              whileHover="hover"
+              whileTap="tap" 
+              className="px-6 py-2 rounded-full transition-colors duration-300 font-normal bg-yellow-400 hover:bg-yellow-300"
+              onClick={() => scrollToSection('cta')}
+            >
+              Invest Now
+            </motion.button>
           </div>
 
         </div>
@@ -120,13 +129,10 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} mt-4`}>
           <div className="flex flex-col space-y-4 bg-white p-4 rounded-lg shadow-lg">
-            <div onClick={() => scrollToSection('home')} className={linkClass('home')}>Home</div>
+            <div onClick={() => scrollToSection('overview')} className={linkClass('overview')}>Overview</div>
             <div onClick={() => scrollToSection('benefits')} className={linkClass('benefits')}>Benefits</div>
-            <div onClick={() => scrollToSection('gallery')} className={linkClass('gallery')}>Gallery</div>
-            {/* <div onClick={() => scrollToSection('pricing')} className={linkClass('pricing')}>Pricing</div> */}
-            <div onClick={() => scrollToSection('testimonials')} className={linkClass('testimonials')}>Testimonials</div>
-            <div onClick={() => scrollToSection('location')} className={linkClass('location')}>Location</div>
-            <div onClick={() => scrollToSection('team')} className={linkClass('team')}>Team</div>
+            <div onClick={() => scrollToSection('specifics')} className={linkClass('specifics')}>Why KSC?</div>
+            <div onClick={() => scrollToSection('pricing')} className={linkClass('pricing')}>Pricing</div>
             <motion.button 
               variants={buttonVariant}
               initial="rest"
@@ -134,11 +140,11 @@ const Navbar = () => {
               whileTap="tap" 
               className="px-6 py-2 rounded-full transition-colors duration-300 font-normal bg-yellow-400 hover:bg-yellow-300"
               onClick={() => {
-                scrollToSection('calculator');
+                scrollToSection('cta');
                 setIsOpen(false);
               }}
             >
-              Get Started
+              Invest Now
             </motion.button>
           </div>
         </div>

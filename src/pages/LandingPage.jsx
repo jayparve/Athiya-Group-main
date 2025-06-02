@@ -1,15 +1,14 @@
 import React from 'react';
 import Hero from '../components/landingpage/LandingHero';
 import LandingNavbar from '../components/landingpage/LandingNavbar';
-import LandInvestmentCalculator from '../components/landingpage/LandInvestmentCalculator';
+import OverviewSection from '../components/landingpage/OverviewSection';
 import BenefitsSection from '../components/landingpage/BenefitsSection';
-import GallerySection from '../components/landingpage/GallerySection';
-import LocationSection from '../components/landingpage/LocationSection';
-import TeamSection from '../components/landingpage/TeamSection';
+import SpecificsSection from '../components/landingpage/SpecificsSection';
 import PricingSection from '../components/landingpage/PricingSection';
-import PlotData from '../components/landingpage/plotData';
-import Testimonials from '../components/Testimonials';
+import CTASection from '../components/landingpage/CTASection';
+import PartnersSection from '../components/landingpage/PartnersSection';
 import Footer from '../components/Footer';
+import GallerySection from '../components/landingpage/GallerySection';
 
 const LandingPage = () => {
   return (
@@ -18,34 +17,30 @@ const LandingPage = () => {
         <div id="home">
           <Hero />
         </div>
+        <div id="overview">
+          <OverviewSection />
+        </div>
         <div id="benefits">
           <BenefitsSection />
         </div>
-        <div id="benefits">
-          <PlotData />
+        <div id="partners">
+          <PartnersSection />
+        </div>
+        <div id="specifics">
+          <SpecificsSection />
         </div>
         <div id="gallery">
           <GallerySection />
         </div>
-        <div id="testimonials">
-          <Testimonials />
-        </div>
-        {/* <div id="pricing">
+        <div id="pricing">
           <PricingSection />
-        </div> */}
-        {/* <div id="calculator">
-          <LandInvestmentCalculator />
-        </div> */}
-        <div id="location">
-          <LocationSection />
         </div>
-        <div id="team">
-          <TeamSection />
+        <div id="cta">
+          <CTASection />
         </div>
         <footer>
           <Footer />
         </footer>
-    
     </div>
   );
 };
