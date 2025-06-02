@@ -42,7 +42,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <div className="relative bg-gradient-to-b from-gray-50 to-white py-24">
+    <div className="relative  bg-gradient-to-b from-gray-50 to-white py-24">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-white bg-opacity-90">
         <div className="absolute inset-0 bg-grid-gray-100 bg-grid opacity-5"></div>
