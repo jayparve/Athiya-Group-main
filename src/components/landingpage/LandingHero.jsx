@@ -28,6 +28,31 @@ const BackgroundImage = memo(({ imagePath, onLoad }) => (
 
 BackgroundImage.displayName = 'BackgroundImage';
 
+// Memoize BackgroundVideo component for mobile
+const BackgroundVideo = memo(() => (
+  <div className="relative">
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="shadow-2xl w-full h-64 object-cover"
+      onError={(e) => {
+        console.error('Video failed to load:', e);
+        // Fallback to image if video fails
+        e.target.style.display = 'none';
+      }}
+    >
+      <source src="/NMIA.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    {/* Slight black overlay */}
+    <div className="absolute inset-0 bg-black/20"></div>
+  </div>
+));
+
+BackgroundVideo.displayName = 'BackgroundVideo';
+
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -97,7 +122,7 @@ const Hero = () => {
           animate="visible"
           className="flex flex-col items-center text-center"
         >
-          {/* Image - Top Section (1/3 height) */}
+          {/* Image/Video - Top Section (1/3 height) */}
           <motion.div 
             variants={fadeUpVariant}
             className="w-full mb-8"
@@ -105,11 +130,16 @@ const Hero = () => {
             <Suspense fallback={
               <div className=" w-full h-64 md:h-80 animate-pulse" />
             }>
-              {isLoaded && (
-                <BackgroundImage 
-                  imagePath={bgimgweb}
-                  onLoad={() => setIsLoaded(true)}
-                />
+              {/* Show video on mobile, image on desktop */}
+              {isMobile ? (
+                <BackgroundVideo />
+              ) : (
+                isLoaded && (
+                  <BackgroundImage 
+                    imagePath={bgimgweb}
+                    onLoad={() => setIsLoaded(true)}
+                  />
+                )
               )}
             </Suspense>
             
@@ -122,14 +152,14 @@ const Hero = () => {
           >
             <motion.h1 
               variants={fadeUpVariant}
-              className="text-4xl md:text-5xl lg:text-5xl font-bold mb-4 text-black font-merriweather"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-black font-merriweather"
             >
               Athiya Developers Presents: KSC New Town, Raigad (Third Mumbai)
             </motion.h1>
             
             <motion.p 
               variants={fadeUpVariant}
-              className="text-2xl md:text-3xl font-semibold mb-6 text-black"
+              className="text-xl md:text-3xl font-semibold mb-6 text-black"
             >
               Invest in Maharashtra's $300 Billion Future!
             </motion.p>
@@ -147,7 +177,7 @@ const Hero = () => {
               initial="rest"
               whileHover="hover"
               whileTap="tap"
-              className="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-10 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform border-2 border-yellow-500 hover:border-yellow-600"
+              className="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 md:py-4 md:px-10 rounded-xl text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform border-2 border-yellow-500 hover:border-yellow-600 w-full max-w-xs md:max-w-none md:w-auto text-center"
             >
               Secure Your Land with Athiya Developers!
             </motion.a>
