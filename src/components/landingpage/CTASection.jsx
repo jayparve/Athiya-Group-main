@@ -68,7 +68,7 @@ const CTASection = () => {
             className="text-3xl md:text-4xl font-bold mb-6 text-yellow-400"
           >
             <span className="relative inline-block pb-2">
-              Don't Just Watch the Future Unfold. Own a Part of It.
+            Don't Just Watch the Future Unfold. Own a Part of It with Athiya Developers.
               <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-16 h-1 bg-yellow-400"></div>
             </span>
           </motion.h2>
@@ -77,30 +77,30 @@ const CTASection = () => {
             variants={fadeInUpVariants}
             className="text-lg md:text-xl mb-8 max-w-2xl mx-auto"
           >
-            The KSC New Town (Third Mumbai) transformation is a landmark opportunity. Are you ready to be a part of it?
+            The KSC New Town (Third Mumbai) transformation is a landmark opportunity. Are you ready to partner with Athiya Developers and be a part of it?
           </motion.p>
           
           <motion.ul 
             variants={fadeInUpVariants}
             className="list-disc list-inside text-left max-w-md mx-auto mb-8 space-y-2 text-gray-300"
           >
-            <li>Visionary investors seeking high-growth opportunities.</li>
+            <li>investors looking for smart opportunities with high growth potential.</li>
             <li>Individuals planning dream homes in a city of the future.</li>
-            <li>Businesses aiming to establish in a strategic economic zone.</li>
+            <li>Businesses aiming to set up in a prime economic zone.</li>
           </motion.ul>
           
           <motion.p 
             variants={fadeInUpVariants}
             className="text-lg md:text-xl mb-10"
           >
-            KSC New Town in Raigad offers you the canvas. The time to act is now.
+            KSC New Town in Raigad district offers you the canvas. Athiya Devlopers provide the expertise. The time to act is now.
           </motion.p>
 
           <motion.div 
             variants={fadeInUpVariants}
             className="bg-white text-gray-800 p-8 rounded-lg shadow-2xl max-w-lg mx-auto"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Explore Land Opportunities!</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Explore Land Opportunities with Athiya Developers!</h3>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">

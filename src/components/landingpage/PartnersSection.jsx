@@ -3,16 +3,39 @@ import { motion } from 'framer-motion';
 
 const PartnersSection = () => {
   const partners = [
-    'MMRDA Logo',
-    'CIDCO Logo', 
-    'NITI Aayog Logo',
-    'Blackstone Logo',
-    'Adani Realty Logo',
-    'Reliance Logo',
-    'Godrej Properties Logo',
-    'L&T Realty Logo',
-    'Govt. of Maharashtra',
-    'MIDC Logo'
+    {
+      name: 'Godrej Properties',
+      logo: '/godrej-properties.png',
+      alt: 'Godrej Properties Logo'
+    },
+    {
+      name: 'Blackstone Group',
+      logo: '/blackstonegroup.svg',
+      alt: 'Blackstone Group Logo',
+      isSmall: true
+    },
+    {
+      name: 'MIDC',
+      logo: '/midc.png',
+      alt: 'MIDC Logo'
+    },
+    {
+      name: 'L&T Realty',
+      logo: '/L&T.png',
+      alt: 'L&T Realty Logo'
+    },
+    {
+      name: 'Adani Realty',
+      logo: '/adani.svg',
+      alt: 'Adani Realty Logo'
+    },
+    {
+      name: 'Reliance',
+      logo: '/reliance.png',
+      alt: 'Reliance Logo',
+      isSmall: true
+      
+    }
   ];
 
   const containerVariants = {
@@ -53,15 +76,40 @@ const PartnersSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center"
         >
           {partners.map((partner, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-gray-200 border border-dashed border-gray-400 text-gray-600 h-16 rounded-md flex items-center justify-center text-xs text-center p-2 hover:bg-gray-300 transition-colors duration-300"
+              className="bg-white border border-gray-200 shadow-sm h-20 rounded-lg flex items-center justify-center p-5 hover:shadow-md transition-all duration-300 hover:scale-105 overflow-hidden"
             >
-              {partner}
+              <img
+                src={partner.logo}
+                alt={partner.alt}
+                className={`object-contain filter grayscale hover:grayscale-0 transition-all duration-300 ${
+                  partner.isSmall 
+                    ? 'w-32 h-60 transform scale-150' 
+                    : 'w-4/5 h-4/5'
+                }`}
+                style={partner.isSmall ? {
+                  minHeight: '48px',
+                  minWidth: '64px'
+                } : {
+                  minHeight: '32px',
+                  minWidth: '48px'
+                }}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <span 
+                className="text-xs text-gray-600 text-center hidden"
+                style={{ display: 'none' }}
+              >
+                {partner.name}
+              </span>
             </motion.div>
           ))}
         </motion.div>
