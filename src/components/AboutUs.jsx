@@ -20,7 +20,7 @@ const AboutUs = () => {
             Know More About Us!
           </button>
         </div>
-        <div className="w-96">
+        <div className="w-96 ">
           <img 
             src={Aboutimg} 
             alt="House" 
