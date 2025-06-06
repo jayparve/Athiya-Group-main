@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { databases, functions, DATABASE_ID, COLLECTION_ID, FUNCTION_ID } from '../../lib/appwrite';
+import { ID } from 'appwrite';
 
 const CTASection = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,9 @@ const CTASection = () => {
     plotSize: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -18,10 +23,45 @@ const CTASection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.phone) {
-      alert(`Thank you for your inquiry, ${formData.name}! We will get back to you soon at ${formData.email} or ${formData.phone}.`);
+    
+    if (!formData.name || !formData.email || !formData.phone) {
+      setSubmitStatus('Please fill in all required fields.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    try {
+      // Save to Appwrite database
+      const document = await databases.createDocument(
+        DATABASE_ID,
+        COLLECTION_ID,
+        ID.unique(),
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          Type: formData.landType, // Note: Using 'Type' to match your database attribute
+          Plotsize: formData.plotSize // Note: Using 'Plotsize' to match your database attribute
+        }
+      );
+
+      // Send email notification via Appwrite function
+      const functionResponse = await functions.createExecution(
+        FUNCTION_ID,
+        JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          landType: formData.landType,
+          plotSize: formData.plotSize
+        })
+      );
+
+      // Reset form and show success message
       setFormData({
         name: '',
         email: '',
@@ -29,8 +69,14 @@ const CTASection = () => {
         landType: 'residential',
         plotSize: ''
       });
-    } else {
-      alert("Please fill in all required fields.");
+      
+      setSubmitStatus(`Thank you for your inquiry, ${formData.name}! We will get back to you soon.`);
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('There was an error submitting your inquiry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -101,6 +147,17 @@ const CTASection = () => {
             className="bg-white text-gray-800 p-8 rounded-lg shadow-2xl max-w-lg mx-auto"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Explore Land Opportunities with Athiya Developers!</h3>
+            
+            {submitStatus && (
+              <div className={`mb-4 p-3 rounded-md ${
+                submitStatus.includes('error') || submitStatus.includes('Please fill') 
+                  ? 'bg-red-100 text-red-700 border border-red-300' 
+                  : 'bg-green-100 text-green-700 border border-green-300'
+              }`}>
+                {submitStatus}
+              </div>
+            )}
+            
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -182,9 +239,14 @@ const CTASection = () => {
               
               <button
                 type="submit"
-                className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-4 rounded-lg text-lg transition duration-300 transform hover:scale-105"
+                disabled={isSubmitting}
+                className={`w-full font-bold py-3 px-4 rounded-lg text-lg transition duration-300 transform ${
+                  isSubmitting 
+                    ? 'bg-gray-400 text-gray-700 cursor-not-allowed' 
+                    : 'bg-yellow-400 hover:bg-yellow-500 text-gray-900 hover:scale-105'
+                }`}
               >
-                Request More Information
+                {isSubmitting ? 'Submitting...' : 'Request More Information'}
               </button>
             </form>
           </motion.div>

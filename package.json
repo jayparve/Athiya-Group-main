@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "aos": "^2.3.4",
+    "appwrite": "^18.1.1",
     "framer-motion": "^11.18.0",
     "gsap": "^3.12.7",
     "i18next": "^25.1.2",
